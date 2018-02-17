@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 import {Image, Text, View} from 'react-native';
-import {Styles} from 'app/src/constants/Styles';
+import {DIRECT_TAN, Styles} from '../../constants/Styles';
 
 export default class Splash extends React.Component {
 
   render() {
     return(
-      <View style={{flex: 1}}>
+      <View style={Styles.screen}>
         <View style={Styles.top_container}>
           <Image
             source={require('app/assets/images/directors-logo.jpg')}
@@ -15,7 +15,7 @@ export default class Splash extends React.Component {
           />
         </View>
         <View style={Styles.bottom_container}>
-          <Text style={{color: 'white', fontSize: 25, fontFamily: 'open-sans-regular'}}>HELLO LOWELL :)</Text>
+          <Text style={{color: DIRECT_TAN, fontSize: 25, fontFamily: 'open-sans-regular'}}>HELLO LOWELL :)</Text>
         </View>
       </View>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 import {Font} from 'expo';
-import Splash from './app/src/components/screens/Splash';
+import Dashboard from "./app/src/components/screens/Dashboard";
 
 export default class App extends React.Component {
 
@@ -19,7 +19,7 @@ export default class App extends React.Component {
   render() {
     return (
       (this.state.fontLoaded ? (
-        <Splash/>
+        <Dashboard/>
       ) : (
         <Text>Loading...</Text>
       ))

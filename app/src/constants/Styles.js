@@ -1,6 +1,12 @@
 import { StyleSheet } from 'react-native';
 
+export const DIRECT_TAN = '#be9962';
+
 export const Styles = StyleSheet.create({
+
+  screen: {
+    flex: 1
+  },
 
   top_container: {
     flex: 5,
