@@ -19,7 +19,7 @@ export default class App extends React.Component {
   render() {
     return (
       (this.state.fontLoaded ? (
-        <Dashboard/>
+        <Dashboard name='Lowell'/>
       ) : (
         <Text>Loading...</Text>
       ))

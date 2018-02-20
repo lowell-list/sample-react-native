@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export const DIRECT_TAN = '#be9962';
+export const DIRECT_GRAY = '#8a8b8c';
 
 export const Styles = StyleSheet.create({
 

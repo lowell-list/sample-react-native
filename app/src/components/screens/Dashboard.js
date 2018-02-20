@@ -1,13 +1,14 @@
 import React from "react";
-import {Image, ImageBackground, Text, View} from 'react-native';
-import {Styles} from "../../constants/Styles";
+import {Image, ImageBackground, StatusBar, Text, View} from 'react-native';
+import {DIRECT_GRAY, Styles} from "../../constants/Styles";
+import AccountDashboardWidget from "../common/AccountDashboardWidget";
 
 export default class Dashboard extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      imageBackgroundHeight: -1,
+      profileImageHeight: -1,
     };
   }
 
@@ -20,25 +21,27 @@ export default class Dashboard extends React.Component {
           onLayout={(event) => {
             let {x, y, width, height} = event.nativeEvent.layout;
             console.log("the height is " + height);
-            this.setState({ imageBackgroundHeight: height });
+            this.setState({ profileImageHeight: height*0.6 });
+
+
           }}
         >
-          { this.state.imageBackgroundHeight !== -1
+          { this.state.profileImageHeight !== -1
             ? <Image
               source={require('app/assets/images/lowell-mug-2013.jpg')}
               style={{
-                borderWidth:1,
-                borderColor:'rgba(0,0,0,0.2)',
-                width: this.state.imageBackgroundHeight/2,
-                height: this.state.imageBackgroundHeight/2,
-                borderRadius: this.state.imageBackgroundHeight/4,
+                width: this.state.profileImageHeight,
+                height: this.state.profileImageHeight,
+                borderRadius: this.state.profileImageHeight/2,
               }}
             />
             : null
           }
         </ImageBackground>
-        <View style={{flex:2, backgroundColor: 'black'}}>
-          <Text style={{color: 'white', fontSize: 25, fontFamily: 'open-sans-regular'}}>Hello Lowell</Text>
+        <View style={{flex:2, backgroundColor: DIRECT_GRAY, alignItems: 'center', paddingHorizontal: 20}}>
+          <Text style={{color: 'white', fontSize: 25, fontFamily: 'open-sans-regular'}}>HELLO {this.props.name.toUpperCase()}</Text>
+          <AccountDashboardWidget name='Direct Checking' visibleAccountDigits='4357' dollars='$ 7,289.' cents='42'/>
+          <AccountDashboardWidget name='Direct Savings' visibleAccountDigits='2616' dollars='$ 14,347.' cents='23'/>
         </View>
       </View>
     );
