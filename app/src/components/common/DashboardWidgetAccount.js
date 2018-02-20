@@ -2,7 +2,7 @@ import React from "react";
 import {Text, View} from 'react-native';
 import {DIRECT_TAN, DIRECT_GRAY} from '../../constants/Styles';
 
-export default class AccountDashboardWidget extends React.Component {
+export default class DashboardWidgetAccount extends React.Component {
 
   constructor(props) {
     super(props);
