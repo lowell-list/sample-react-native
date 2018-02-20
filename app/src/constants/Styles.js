@@ -12,7 +12,7 @@ export const Styles = StyleSheet.create({
   top_container: {
     flex: 5,
     backgroundColor: 'white',
-    paddingHorizontal: 20,
+    padding: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },

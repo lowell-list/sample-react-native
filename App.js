@@ -1,7 +1,8 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {StackNavigator,} from 'react-navigation';
 import {Font} from 'expo';
-import Dashboard from "./app/src/components/screens/Dashboard";
+import DashboardScreen from "./app/src/components/screens/DashboardScreen";
+import SplashScreen from "./app/src/components/screens/SplashScreen";
 
 export default class App extends React.Component {
 
@@ -19,11 +20,29 @@ export default class App extends React.Component {
   render() {
     return (
       (this.state.fontLoaded ? (
-        <Dashboard name='Lowell'/>
+        <RootStack />
       ) : (
-        <Text>Loading...</Text>
+        null
       ))
     );
   }
 }
+
+const RootStack = StackNavigator(
+  {
+    Splash: {
+      screen: SplashScreen,
+    },
+    Dashboard: {
+      screen: DashboardScreen,
+    },
+  },
+  {
+    initialRouteName: 'Splash',
+    headerMode: 'none',
+    navigationOptions: {
+      headerVisible: false,
+    },
+  }
+);
 

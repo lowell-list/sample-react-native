@@ -1,46 +1,24 @@
 import React from "react";
-import {StatusBar, Alert, Image, ImageBackground, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, Image, ScrollView, StatusBar, Text, TouchableOpacity, View} from 'react-native';
 import {DIRECT_GRAY, DIRECT_TAN, Styles} from "../../constants/Styles";
 import DashboardWidgetAccount from "../common/DashboardWidgetAccount";
 import DashboardWidgetRewards from "../common/DashboardWidgetRewards";
+import UserHeader from "../common/UserHeader";
 
-export default class Dashboard extends React.Component {
+export default class DashboardScreen extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      profileImageDimension: -1,
-    };
-  }
-
-  onImageBackgroundLayout(event) {
-    let {x, y, width, height} = event.nativeEvent.layout;
-    console.log("the height is " + height);
-    this.setState({ profileImageDimension: height*0.6 });
-  }
+  static navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state;
+    return {
+      title: params ? 'Dashboard: ' + params.name : 'Dashboard',
+    }
+  };
 
   render() {
     return(
       <View style={[Styles.screen, {backgroundColor: DIRECT_GRAY}]}>
         <StatusBar hidden />
-        <ImageBackground
-          style={{flex:1, alignItems: 'center', justifyContent: 'center'}}
-          source={require('app/assets/images/blue-sky-water-and-green-grass.jpg')}
-          onLayout={this.onImageBackgroundLayout.bind(this)}
-        >
-          { this.state.profileImageDimension !== -1
-            ? <Image
-              source={require('app/assets/images/lowell-mug-2013.jpg')}
-              style={{
-                width: this.state.profileImageDimension,
-                height: this.state.profileImageDimension,
-                borderRadius: this.state.profileImageDimension/2,
-              }}
-            />
-            : null
-          }
-        </ImageBackground>
-        <Text style={{alignSelf: 'center', color: 'white', fontSize: 25, fontFamily: 'open-sans-regular'}}>HELLO {this.props.name.toUpperCase()}</Text>
+        <UserHeader name={this.props.navigation.state.params.name}/>
         <View style={{flex:2}}>
           <ScrollView
             style={{paddingHorizontal: 10, marginBottom: 50}}
@@ -52,7 +30,7 @@ export default class Dashboard extends React.Component {
           </ScrollView>
         </View>
         <View style={{position: 'absolute', alignSelf: 'center', bottom: 5, width: '75%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end'}}>
-          <TouchableOpacity onPress={this._onPressHomeButton}>
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <Image source={require('app/assets/images/icon-house.png')} style={{width: 40, height: 40}}/>
           </TouchableOpacity>
           <TouchableOpacity onPress={this._onPressAddButton}>
@@ -66,10 +44,6 @@ export default class Dashboard extends React.Component {
         </View>
       </View>
     );
-  }
-
-  _onPressHomeButton() {
-    Alert.alert('Home button pressed');
   }
 
   _onPressAddButton() {
