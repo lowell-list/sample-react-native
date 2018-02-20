@@ -1,6 +1,6 @@
 import React from "react";
-import {Image, ImageBackground, Text, View} from 'react-native';
-import {DIRECT_GRAY, Styles} from "../../constants/Styles";
+import {Image, ImageBackground, ScrollView, Text, View} from 'react-native';
+import {DIRECT_GRAY, DIRECT_TAN, Styles} from "../../constants/Styles";
 import DashboardWidgetAccount from "../common/DashboardWidgetAccount";
 import DashboardWidgetRewards from "../common/DashboardWidgetRewards";
 
@@ -21,7 +21,7 @@ export default class Dashboard extends React.Component {
 
   render() {
     return(
-      <View style={Styles.screen}>
+      <View style={[Styles.screen, {backgroundColor: DIRECT_GRAY}]}>
         <ImageBackground
           style={{flex:1, alignItems: 'center', justifyContent: 'center'}}
           source={require('app/assets/images/blue-sky-water-and-green-grass.jpg')}
@@ -39,12 +39,22 @@ export default class Dashboard extends React.Component {
             : null
           }
         </ImageBackground>
-        <View style={{flex:2, backgroundColor: DIRECT_GRAY, alignItems: 'center', paddingHorizontal: 10}}>
-          <Text style={{color: 'white', fontSize: 25, fontFamily: 'open-sans-regular'}}>HELLO {this.props.name.toUpperCase()}</Text>
-          <DashboardWidgetAccount name='Direct Checking' visibleAccountDigits='4357' dollars='$ 7,289.' cents='42'/>
-          <DashboardWidgetAccount name='Direct Savings' visibleAccountDigits='2616' dollars='$ 14,347.' cents='23'/>
-          <DashboardWidgetAccount name='BofA Checking' visibleAccountDigits='1234' dollars='$ 8,420.' cents='58'/>
-          <DashboardWidgetRewards name='Direct Rewards' effectiveSavings='$3,000.00' remainingSavings='$37,000.00'/>
+        <Text style={{color: 'white', fontSize: 25, fontFamily: 'open-sans-regular', alignSelf: 'center'}}>HELLO {this.props.name.toUpperCase()}</Text>
+        <View style={{flex:2}}>
+          <ScrollView
+            style={{paddingHorizontal: 10, marginBottom: 30}}
+            contentContainerStyle={{alignItems:'center'}}
+          >
+            <DashboardWidgetAccount name='Direct Checking' visibleAccountDigits='4357' dollars='$ 7,289.' cents='42'/>
+            <DashboardWidgetAccount name='Direct Savings' visibleAccountDigits='2616' dollars='$ 14,347.' cents='23'/>
+            <DashboardWidgetAccount name='BofA Checking' visibleAccountDigits='1234' dollars='$ 8,420.' cents='58'/>
+            <DashboardWidgetRewards name='Direct Rewards' effectiveSavings='$3,000.00' remainingSavings='$37,000.00'/>
+          </ScrollView>
+        </View>
+        <View style={{bottom: 5, width: '100%', alignItems: 'center', position: 'absolute'}}>
+          <View style={{width: 50, height: 50, borderRadius:25, backgroundColor: DIRECT_TAN, alignItems: 'center', justifyContent: 'center'}}>
+            <Text style={{color: 'white', fontSize: 25, fontFamily: 'open-sans-regular'}}>+</Text>
+          </View>
         </View>
       </View>
     );

@@ -6,7 +6,7 @@ export const DIRECT_GRAY = '#8a8b8c';
 export const Styles = StyleSheet.create({
 
   screen: {
-    flex: 1
+    flex: 1,
   },
 
   top_container: {
