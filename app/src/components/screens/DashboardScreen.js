@@ -12,6 +12,11 @@ export default class DashboardScreen extends React.Component {
       <View style={[Styles.screen, {backgroundColor: DIRECT_GRAY}]}>
         <StatusBar hidden />
         <UserHeader name={this.props.screenProps.name}/>
+        <TouchableOpacity style={{position: 'absolute', top: 0, left: 0}} onPress={this._onPressGearButton}>
+          <Image source={require('app/assets/images/icon-gear.png')} style={{
+            margin: 5, width: 40, height: 40
+          }}/>
+        </TouchableOpacity>
         <View style={{flex:2}}>
           <ScrollView
             style={{paddingHorizontal: 10, marginBottom: 50}}
@@ -37,6 +42,10 @@ export default class DashboardScreen extends React.Component {
         </View>
       </View>
     );
+  }
+
+  _onPressGearButton() {
+    Alert.alert('Gear button pressed');
   }
 
   _onPressAddButton() {

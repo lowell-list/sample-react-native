@@ -13,7 +13,7 @@ export default class DashboardWidgetRewards extends React.Component {
       <View style={{width: '100%', marginBottom: 10}}>
         <View style={{height: 20, backgroundColor: DIRECT_TAN}}/>
         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent:'center', backgroundColor: 'white'}}>
-          <Text style={{color: DIRECT_GRAY, fontSize: 18, fontFamily: 'open-sans-regular'}}>{this.props.name}</Text>
+          <Text style={{color: DIRECT_GRAY, fontSize: 18, fontFamily: 'open-sans-semibold'}}>{this.props.name}</Text>
         </View>
         <View style={{flexDirection: 'row', alignItems: 'flex-start', justifyContent:'center', backgroundColor: 'white', paddingHorizontal:10, paddingBottom: 10}}>
           <View style={{flex: 1, flexDirection: 'column', alignItems:'center', backgroundColor: 'black', marginEnd: 5, padding: 3}}>

@@ -35,7 +35,7 @@ export default class UserHeader extends React.Component {
             : null
           }
         </ImageBackground>
-        <Text style={{alignSelf: 'center', color: 'white', fontSize: 25, fontFamily: 'open-sans-regular'}}>HELLO {this.props.name.toUpperCase()}</Text>
+        <Text style={{alignSelf: 'center', color: 'white', fontSize: 25, fontFamily: 'oswald-semibold'}}>HELLO {this.props.name.toUpperCase()}</Text>
       </View>
     );
   }

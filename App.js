@@ -13,6 +13,8 @@ export default class App extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'open-sans-regular': require('./app/assets/fonts/OpenSans-Regular.ttf'),
+      'open-sans-semibold': require('./app/assets/fonts/OpenSans-SemiBold.ttf'),
+      'oswald-semibold': require('./app/assets/fonts/Oswald-SemiBold.ttf'),
     });
     this.setState({ fontLoaded: true });
   }

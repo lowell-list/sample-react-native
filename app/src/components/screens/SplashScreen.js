@@ -17,7 +17,7 @@ export default class SplashScreen extends React.Component {
           <Button title='Start' onPress={() => this.props.navigation.navigate('Dashboard')} />
         </View>
         <View style={Styles.bottom_container}>
-          <Text style={{color: DIRECT_TAN, fontSize: 25, fontFamily: 'open-sans-regular'}}>HELLO {this.props.screenProps.name.toUpperCase()} :)</Text>
+          <Text style={{color: DIRECT_TAN, fontSize: 30, fontFamily: 'oswald-semibold'}}>HELLO {this.props.screenProps.name.toUpperCase()} :)</Text>
         </View>
       </View>
     );
