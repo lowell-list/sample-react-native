@@ -2,13 +2,7 @@ import React from 'react';
 import {Button, Image, StatusBar, Text, View} from 'react-native';
 import {DIRECT_TAN, Styles} from '../../constants/Styles';
 
-const _name = 'Lowell';
-
 export default class SplashScreen extends React.Component {
-
-  static navigationOptions = {
-    title: 'Splash',
-  };
 
   render() {
     return(
@@ -20,10 +14,10 @@ export default class SplashScreen extends React.Component {
             style={{flex: 1, width: '100%'}}
             resizeMode='contain'
           />
-          <Button title='Start' onPress={() => this.props.navigation.navigate('Dashboard',{name: _name})} />
+          <Button title='Start' onPress={() => this.props.navigation.navigate('Dashboard')} />
         </View>
         <View style={Styles.bottom_container}>
-          <Text style={{color: DIRECT_TAN, fontSize: 25, fontFamily: 'open-sans-regular'}}>HELLO {_name.toUpperCase()} :)</Text>
+          <Text style={{color: DIRECT_TAN, fontSize: 25, fontFamily: 'open-sans-regular'}}>HELLO {this.props.screenProps.name.toUpperCase()} :)</Text>
         </View>
       </View>
     );

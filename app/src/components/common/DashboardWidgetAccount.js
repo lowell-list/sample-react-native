@@ -1,16 +1,33 @@
 import React from "react";
-import {Text, View} from 'react-native';
-import {DIRECT_TAN, DIRECT_GRAY} from '../../constants/Styles';
+import {Animated, Text, View} from 'react-native';
+import {DIRECT_GRAY, DIRECT_TAN} from '../../constants/Styles';
 
 export default class DashboardWidgetAccount extends React.Component {
 
-  constructor(props) {
-    super(props);
+  state = {
+    fadeAnim: new Animated.Value(0),  // Initial value for opacity: 0
+  };
+
+  componentDidMount() {
+    Animated.timing(                  // Animate over time
+      this.state.fadeAnim,            // The animated value to drive
+      {
+        toValue: 1,                   // Animate to opacity: 1 (opaque)
+        duration: 500,
+        delay: Number(this.props.delay),
+      }
+    ).start();                        // Starts the animation
   }
 
   render() {
+    let { fadeAnim } = this.state;
+
     return(
-      <View style={{width: '100%', marginBottom: 10}}>
+      <Animated.View style={{
+        width: '100%',
+        marginBottom: this.state.fadeAnim.interpolate({inputRange: [0, 1], outputRange: [-100, 10]}),
+        opacity: fadeAnim
+      }}>
         <View style={{height: 20, backgroundColor: DIRECT_TAN}}/>
         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent:'center', backgroundColor: 'white'}}>
           <Text style={{color: DIRECT_GRAY, fontSize: 18, fontFamily: 'open-sans-regular'}}>{this.props.name}</Text>
@@ -23,7 +40,7 @@ export default class DashboardWidgetAccount extends React.Component {
         <View style={{flexDirection: 'row', justifyContent:'center', backgroundColor: 'white'}}>
           <Text style={{color: DIRECT_GRAY, fontSize: 8, fontFamily: 'open-sans-regular'}}>Account Balance</Text>
         </View>
-      </View>
+      </Animated.View>
     );
   }
 }

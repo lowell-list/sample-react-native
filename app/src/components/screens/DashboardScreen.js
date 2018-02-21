@@ -7,25 +7,18 @@ import UserHeader from "../common/UserHeader";
 
 export default class DashboardScreen extends React.Component {
 
-  static navigationOptions = ({ navigation }) => {
-    const { params } = navigation.state;
-    return {
-      title: params ? 'Dashboard: ' + params.name : 'Dashboard',
-    }
-  };
-
   render() {
     return(
       <View style={[Styles.screen, {backgroundColor: DIRECT_GRAY}]}>
         <StatusBar hidden />
-        <UserHeader name={this.props.navigation.state.params.name}/>
+        <UserHeader name={this.props.screenProps.name}/>
         <View style={{flex:2}}>
           <ScrollView
             style={{paddingHorizontal: 10, marginBottom: 50}}
             contentContainerStyle={{alignItems:'center'}}
           >
-            <DashboardWidgetAccount name='Direct Checking' visibleAccountDigits='4357' dollars='$ 7,289.' cents='42'/>
-            <DashboardWidgetAccount name='Direct Savings' visibleAccountDigits='2616' dollars='$ 14,347.' cents='23'/>
+            <DashboardWidgetAccount name='Direct Checking' visibleAccountDigits='4357' dollars='$ 7,289.' cents='42' delay='500'/>
+            <DashboardWidgetAccount name='Direct Savings' visibleAccountDigits='2616' dollars='$ 14,347.' cents='23' delay='750'/>
             <DashboardWidgetRewards name='Direct Rewards' effectiveSavings='$3,000.00' remainingSavings='$37,000.00'/>
           </ScrollView>
         </View>

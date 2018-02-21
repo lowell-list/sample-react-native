@@ -20,7 +20,7 @@ export default class App extends React.Component {
   render() {
     return (
       (this.state.fontLoaded ? (
-        <RootStack />
+        <RootStack screenProps={{name: 'Lowell'}}/>
       ) : (
         null
       ))
