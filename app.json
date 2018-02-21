@@ -1,5 +1,10 @@
 {
   "expo": {
-    "sdkVersion": "25.0.0"
+    "name": "Director's Mortgage banking app",
+    "description": "App for Director's Mortgage customers to view and manage their bank accounts and reward information.",
+    "slug": "directors-banking-app",
+    "privacy": "unlisted",
+    "sdkVersion": "25.0.0",
+    "orientation": "portrait"
   }
 }
